@@ -1,7 +1,7 @@
 # XixinHealth
 大三小学期拓展项目“熙心健康”
 
-## 后端运行(以IDEA为例)
+## App后端运行(以IDEA为例)
 
 `jdk 1.8`
 
