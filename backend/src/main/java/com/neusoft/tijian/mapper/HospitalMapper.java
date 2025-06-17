@@ -11,4 +11,7 @@ public interface HospitalMapper {
 
     @Select("select * from hospital where state=#{state} order by hpId")
     public List<Hospital> listHospital(Integer state);
+
+    @Select("select * from hospital where hpId=#{hpId}")
+    public Hospital getHospitalById(Integer hpId);
 }
