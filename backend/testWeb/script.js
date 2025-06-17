@@ -54,3 +54,11 @@ function sendSaveUsersRequest() {
     };
     sendRequest(url,'POST',userData,'response-save-users')
 }
+
+function sendGetOrdersByUserIdRequest() {
+    const url = 'http://localhost:8080/tijian/orders/getOrdersByUserId';
+    const userData = {
+        userId: "12345671111",
+    };
+    sendRequest(url,'POST',userData,'response-orders')
+}
