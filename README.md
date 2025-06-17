@@ -18,3 +18,5 @@
 运行`backend`中的`TijianServerRunApplication.java`即可启动后端
 
 点击 [这里](http://localhost:8080/tijian/test) 测试后端
+
+点击 [这里](https://doc.apipost.net/docs/detail/49370fac9cb5000?target_id=136e7138312008&locale=zh-cn) 查看API文档
