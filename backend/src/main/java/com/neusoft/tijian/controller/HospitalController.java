@@ -22,4 +22,9 @@ public class HospitalController {
         return hospitalService.listHospital(hospital.getState());
     }
 
+    @RequestMapping("/getHospitalById")
+    public Hospital getHospitalById(@RequestBody Hospital hospital){
+        return hospitalService.getHospitalById(hospital.getHpId());
+    }
+
 }

@@ -19,4 +19,9 @@ public class HospitalServiceImpl implements HospitalService {
     public List<Hospital> listHospital(Integer state) {
         return hospitalMapper.listHospital(state);
     }
+
+    @Override
+    public Hospital getHospitalById(Integer hpId) {
+        return hospitalMapper.getHospitalById(hpId);
+    }
 }
