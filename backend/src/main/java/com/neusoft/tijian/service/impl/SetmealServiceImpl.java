@@ -18,4 +18,9 @@ public class SetmealServiceImpl implements SetmealService {
     public List<Setmeal> listSetmealByType(Integer type) {
         return setmealMapper.listSetmealByType(type);
     }
+
+    @Override
+    public Setmeal getSetmealById(Integer smId) {
+        return setmealMapper.getSetmealById(smId);
+    }
 }
