@@ -27,11 +27,16 @@ public class OrdersController {
     }
     @RequestMapping("/listOrdersByUserId")
     public List<Orders> listOrdersByUserId(@RequestBody Orders orders) {
-        return ordersService.listOrdersByUserId(orders.getUserId());
+        return ordersService.listOrdersByUserId(orders);
     }
 
     @RequestMapping("/removeOrders")
     public int removeOrders(@RequestBody Orders orders) {
         return ordersService.removeOrders(orders.getOrderId());
+    }
+
+    @RequestMapping("/getOrdersById")
+    public Orders getOrdersById(@RequestBody Orders orders) {
+        return ordersService.getOrdersById(orders.getOrderId());
     }
 }

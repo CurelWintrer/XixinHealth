@@ -26,10 +26,13 @@ public interface OrdersMapper {
     int saveOrders(Orders orders);
 
     //根据用户编号查询预约体检订单列表
-    List<Orders> listOrdersByUserId(String userId);
+    List<Orders> listOrdersByUserId(Orders orders);
 
     //取消预约体检订单
     @Delete("delete from orders where orderId=#{orderId}")
     int removeOrders(Integer orderId);
+
+    @Select("select * from orders where orderId=#{orderId}")
+    Orders getOrdersById(Integer orderId);
 
 }

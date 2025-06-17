@@ -25,12 +25,17 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public List<Orders> listOrdersByUserId(String userId) {
-        return ordersMapper.listOrdersByUserId(userId);
+    public List<Orders> listOrdersByUserId(Orders orders) {
+        return ordersMapper.listOrdersByUserId(orders);
     }
 
     @Override
     public int removeOrders(Integer orderId) {
         return ordersMapper.removeOrders(orderId);
+    }
+
+    @Override
+    public Orders getOrdersById(Integer orderId) {
+        return ordersMapper.getOrdersById(orderId);
     }
 }

@@ -21,8 +21,8 @@
         </association>
     </resultMap>
 
-    <select id="listOrdersByUserId" parameterType="String" resultMap="ordersResultMap">
-        select * from orders where userId=#{userId} order by orderId desc
+    <select id="listOrdersByUserId" parameterType="Orders" resultMap="ordersResultMap">
+        select * from orders where userId=#{userId} and state=#{state} order by orderId desc
     </select>
 
 </mapper>
