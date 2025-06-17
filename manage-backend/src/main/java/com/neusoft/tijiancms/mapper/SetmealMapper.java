@@ -12,4 +12,9 @@ public interface SetmealMapper {
     @Select("select * from setmeal order by smId")
     List<Setmeal> listSetmeal();
 
+    //这是专门为Mapper中的listOrders方法做关联查询用的
+    @Select("select * from setmeal where smId=#{smId}")
+    Setmeal getSetmealByIdByMapper(Integer smId);
+
+
 }

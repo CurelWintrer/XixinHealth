@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.tijiancms.mapper.OrdersMapper">
+
+    <resultMap id="ordersResultMap" type="Orders">
+        <id column="orderId" property="orderId" />
+        <result column="orderDate" property="orderDate"/>
+        <result column="userId" property="userId"/>
+        <result column="hpId" property="hpId"/>
+        <result column="smId" property="smId"/>
+        <result column="state" property="state"/>
+        <association property="setmeal" javaType="Setmeal"
+            select="com.neusoft.tijiancms.mapper.SetmealMapper.getSetmealByIdByMapper" column="smId">
+        </association>
+        <association property="hospital" javaType="Hospital"
+            select="com.neusoft.tijiancms.mapper.HospitalMapper.getHospitalById" column="hpId">
+        </association>
+        <association property="users" javaType="Users"
+                     select="com.neusoft.tijiancms.mapper.UsersMapper.getUsersById" column="userId">
+        </association>
+    </resultMap>
+
+    <select id="getOrdersCount" parameterType="OrdersPageRequestDto" resultType="java.lang.Integer">
+        select count(*)
+        from orders o left join users u
+        on o.userId=u.userId
+        <where>
+            <if test="userId!=null and userId!=''">
+                and u.userId = #{userId}
+            </if>
+            <if test="realName!=null and realName!=''">
+                and u.realName like concat('%',#{realName},'%')
+            </if>
+            <if test="sex!=null">
+                and u.sex = #{sex}
+            </if>
+            <if test="smId!=null">
+                and o.smId = #{smId}
+            </if>
+            <if test="orderDate!=null and orderDate!=''">
+                and o.orderDate = #{orderDate}
+            </if>
+            <if test="state!=null">
+                and o.state = #{state}
+            </if>
+        </where>
+    </select>
+
+    <select id="listOrders" parameterType="OrdersPageRequestDto" resultMap="ordersResultMap">
+        select o.*
+        from orders o left join users u
+        on o.userId=u.userId
+        <where>
+            <if test="userId!=null and userId!=''">
+                and u.userId = #{userId}
+            </if>
+            <if test="realName!=null and realName!=''">
+                and u.realName like concat('%',#{realName},'%')
+            </if>
+            <if test="sex!=null">
+                and u.sex = #{sex}
+            </if>
+            <if test="smId!=null">
+                and o.smId = #{smId}
+            </if>
+            <if test="orderDate!=null and orderDate!=''">
+                and o.orderDate = #{orderDate}
+            </if>
+            <if test="state!=null">
+                and o.state = #{state}
+            </if>
+        </where>
+        order by o.orderId
+        limit #{beginNum},#{maxPageNum}
+    </select>
+</mapper>
