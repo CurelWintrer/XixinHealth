@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.tijian.mapper.OrdersMapper">
+
+    <select id="listOrdersAppointmentNumber" parameterType="OrdersMapperDto" resultType="CalendarResponseDto">
+        <foreach collection="list" item="dto" separator="union">
+            select #{dto.date} ymd, count(*) existing from orders where orderDate=#{dto.date} and hpId=#{dto.hpId}
+        </foreach>
+    </select>
+
+    <resultMap id="ordersResultMap" type="Orders">
+        <id column="orderId" property="orderId" />
+        <result column="orderDate" property="orderDate"/>
+        <result column="userId" property="userId"/>
+        <result column="hpId" property="hpId"/>
+        <result column="smId" property="smId"/>
+        <result column="state" property="state"/>
+        <association property="setmeal" javaType="Setmeal"
+            select="com.neusoft.tijian.mapper.SetmealMapper.getSetmealById" column="smId">
+        </association>
+    </resultMap>
+
+    <select id="listOrdersByUserId" parameterType="Orders" resultMap="ordersResultMap">
+        select * from orders where userId=#{userId} and state=#{state} order by orderId desc
+    </select>
+
+</mapper>
