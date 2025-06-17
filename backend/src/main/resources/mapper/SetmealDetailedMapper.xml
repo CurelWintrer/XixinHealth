@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.tijian.mapper.SetmealDetailedMapper">
+
+    <resultMap id="setmealDetailedResultMap" type="SetmealDetailed">
+        <id column="sdId" property="sdId"/>
+        <result column="smId" property="smId"/>
+        <result column="ciId" property="ciId"/>
+        <association property="checkItem" javaType="CheckItem"
+            select="com.neusoft.tijian.mapper.CheckItemMapper.getCheckItemById" column="ciId"></association>
+    </resultMap>
+
+    <select id="listSetmealDetailedBySmId" parameterType="int" resultMap="setmealDetailedResultMap">
+        select * from setmealDetailed where smId=#{smId} order by sdId
+    </select>
+</mapper>
