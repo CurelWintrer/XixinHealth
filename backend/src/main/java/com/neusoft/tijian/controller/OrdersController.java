@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
@@ -22,5 +24,14 @@ public class OrdersController {
     @RequestMapping("/saveOrders")
     public int saveOrders(@RequestBody Orders orders){
         return ordersService.saveOrders(orders);
+    }
+    @RequestMapping("/listOrdersByUserId")
+    public List<Orders> listOrdersByUserId(@RequestBody Orders orders) {
+        return ordersService.listOrdersByUserId(orders.getUserId());
+    }
+
+    @RequestMapping("/removeOrders")
+    public int removeOrders(@RequestBody Orders orders) {
+        return ordersService.removeOrders(orders.getOrderId());
     }
 }

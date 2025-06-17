@@ -9,4 +9,20 @@
         </foreach>
     </select>
 
+    <resultMap id="ordersResultMap" type="Orders">
+        <id column="orderId" property="orderId" />
+        <result column="orderDate" property="orderDate"/>
+        <result column="userId" property="userId"/>
+        <result column="hpId" property="hpId"/>
+        <result column="smId" property="smId"/>
+        <result column="state" property="state"/>
+        <association property="setmeal" javaType="Setmeal"
+            select="com.neusoft.tijian.mapper.SetmealMapper.getSetmealById" column="smId">
+        </association>
+    </resultMap>
+
+    <select id="listOrdersByUserId" parameterType="String" resultMap="ordersResultMap">
+        select * from orders where userId=#{userId} order by orderId desc
+    </select>
+
 </mapper>

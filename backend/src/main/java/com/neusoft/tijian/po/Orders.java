@@ -8,6 +8,16 @@ public class Orders {
     private Integer smId;
     private Integer state;
 
+    private Setmeal setmeal;
+
+    public Setmeal getSetmeal() {
+        return setmeal;
+    }
+
+    public void setSetmeal(Setmeal setmeal) {
+        this.setmeal = setmeal;
+    }
+
     public Integer getOrderId() {
         return orderId;
     }

@@ -6,6 +6,8 @@ import com.neusoft.tijian.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrdersServiceImpl implements OrdersService {
 
@@ -20,5 +22,15 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public int saveOrders(Orders orders) {
         return ordersMapper.saveOrders(orders);
+    }
+
+    @Override
+    public List<Orders> listOrdersByUserId(String userId) {
+        return ordersMapper.listOrdersByUserId(userId);
+    }
+
+    @Override
+    public int removeOrders(Integer orderId) {
+        return ordersMapper.removeOrders(orderId);
     }
 }
