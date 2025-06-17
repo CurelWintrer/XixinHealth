@@ -18,4 +18,9 @@ public class OrdersController {
     public int getOrdersByUserId(@RequestBody Orders orders){
         return ordersService.getOrdersByUserId(orders.getUserId());
     }
+
+    @RequestMapping("/saveOrders")
+    public int saveOrders(@RequestBody Orders orders){
+        return ordersService.saveOrders(orders);
+    }
 }
