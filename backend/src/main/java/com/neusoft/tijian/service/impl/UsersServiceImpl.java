@@ -17,4 +17,14 @@ public class UsersServiceImpl implements UsersService {
     public Users getUsersByUserIdByPass(Users users) {
         return usersMapper.getUsersByUserIdByPass(users);
     }
+
+    @Override
+    public Users getUsersById(String userId) {
+        return usersMapper.getUsersById(userId);
+    }
+
+    @Override
+    public Integer saveUsers(Users users) {
+        return usersMapper.saveUsers(users);
+    }
 }
