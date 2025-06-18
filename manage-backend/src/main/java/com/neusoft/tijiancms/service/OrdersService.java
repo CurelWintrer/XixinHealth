@@ -9,4 +9,6 @@ public interface OrdersService {
     OrdersPageResponseDto listOrders(OrdersPageRequestDto request);
 
     Orders getOrdersById(Integer orderId);
+
+    int updateOrdersState(Orders orders);
 }

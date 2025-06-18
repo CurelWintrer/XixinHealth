@@ -26,4 +26,9 @@ public class OrdersController {
     public Orders getOrdersById(@RequestBody Orders orders) {
         return ordersService.getOrdersById(orders.getOrderId());
     }
+
+    @RequestMapping("/updateOrdersState")
+    public int updateOrdersState(Orders orders) {
+        return ordersService.updateOrdersState(orders);
+    }
 }

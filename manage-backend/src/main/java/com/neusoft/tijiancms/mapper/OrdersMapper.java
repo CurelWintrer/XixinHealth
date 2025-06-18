@@ -3,6 +3,7 @@ package com.neusoft.tijiancms.mapper;
 import com.neusoft.tijiancms.dto.OrdersPageRequestDto;
 import com.neusoft.tijiancms.po.Orders;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -16,5 +17,8 @@ public interface OrdersMapper {
 
     //查询预约订单
     Orders getOrdersById(Integer orderId);
+
+    @Update("update orders set state=#{state} where orderId={orderId}")
+    int updateOrdersState(Orders orders);
 
 }
