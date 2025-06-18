@@ -14,4 +14,7 @@ public interface OrdersMapper {
     //根据条件分页查询
     List<Orders> listOrders(OrdersPageRequestDto request);
 
+    //查询预约订单
+    Orders getOrdersById(Integer orderId);
+
 }

@@ -74,4 +74,8 @@
         order by o.orderId
         limit #{beginNum},#{maxPageNum}
     </select>
+
+    <select id="getOrdersById" parameterType="int" resultMap="ordersResultMap">
+        select * from orders where orderId=#{orderId}
+    </select>
 </mapper>

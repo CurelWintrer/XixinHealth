@@ -2,6 +2,7 @@ package com.neusoft.tijiancms.controller;
 
 import com.neusoft.tijiancms.dto.OrdersPageRequestDto;
 import com.neusoft.tijiancms.dto.OrdersPageResponseDto;
+import com.neusoft.tijiancms.po.Orders;
 import com.neusoft.tijiancms.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,5 +19,11 @@ public class OrdersController {
     @RequestMapping("/listOrders")
     public OrdersPageResponseDto listOrders(@RequestBody OrdersPageRequestDto request) {
         return ordersService.listOrders(request);
+    }
+
+
+    @RequestMapping("/getOrdersById")
+    public Orders getOrdersById(@RequestBody Orders orders) {
+        return ordersService.getOrdersById(orders.getOrderId());
     }
 }

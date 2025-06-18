@@ -60,4 +60,9 @@ public class OrdersServiceImpl implements OrdersService {
 
         return response;
     }
+
+    @Override
+    public Orders getOrdersById(Integer orderId) {
+        return ordersMapper.getOrdersById(orderId);
+    }
 }
