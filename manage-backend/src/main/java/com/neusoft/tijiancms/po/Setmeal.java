@@ -8,6 +8,16 @@ public class Setmeal {
     private Integer type;
     private Integer price;
 
+    private List<SetmealDetailed> sdList;
+
+    public List<SetmealDetailed> getSdList() {
+        return sdList;
+    }
+
+    public void setSdList(List<SetmealDetailed> sdList) {
+        this.sdList = sdList;
+    }
+
     public Integer getSmId() {
         return smId;
     }

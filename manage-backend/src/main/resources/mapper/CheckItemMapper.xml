@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.tijiancms.mapper.CheckItemMapper">
+
+    <resultMap id="checkItemResultMap" type="CheckItem">
+        <id column="ciId" property="ciId" />
+        <result column="ciName" property="ciName"/>
+        <result column="ciContent" property="ciContent"/>
+        <result column="meaning" property="meaning"/>
+        <result column="remarks" property="remarks"/>
+        <collection property="cdList" ofType="CheckItemDetailed"
+                    select="com.neusoft.tijiancms.mapper.CheckItemDetailedMapper.listCheckItemDetailed" column="ciId"></collection>
+    </resultMap>
+
+    <select id="getCheckItemById" parameterType="int" resultMap="checkItemResultMap">
+        select * from checkitem where ciId=#{ciId}
+    </select>
+</mapper>

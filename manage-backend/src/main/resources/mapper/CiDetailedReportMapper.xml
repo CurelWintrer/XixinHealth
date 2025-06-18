@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.tijiancms.mapper.CiDetailedReportMapper">
+
+    <insert id="saveCiDetailedReport" parameterType="CiDetailedReport">
+        insert into cidetailedreport(
+        name,
+        unit,
+        minrange,
+        maxrange,
+        normalValue,
+        normalValueString,
+        type,
+        value,
+        isError,
+        ciId,
+        orderId
+        ) values
+        <foreach collection="list" item="cidr" separator=",">
+            (
+             #{cidr.name},
+             #{cidr.unit},
+             #{cidr.minrange},
+             #{cidr,maxrange},
+             #{cidr.normalValue},
+             #{cidr.normalValueString},
+             #{cidr.type},
+             #{cidr.value},
+             #{cidr.isError},
+             #{cidr.ciId},
+             #{cidr.orderId}
+            )
+        </foreach>
+    </insert>
+</mapper>

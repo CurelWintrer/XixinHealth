@@ -16,5 +16,6 @@ public interface SetmealMapper {
     @Select("select * from setmeal where smId=#{smId}")
     Setmeal getSetmealByIdByMapper(Integer smId);
 
+    Setmeal getSetmealById(Integer smId);
 
 }
