@@ -18,4 +18,19 @@ public class OverallResultServiceImpl implements OverallResultService {
     public List<OverallResult> listOverallResultByOrderId(Integer orderId) {
         return overallResultMapper.listOverallResultByOrderId(orderId);
     }
+
+    @Override
+    public int saveOverallResult(OverallResult overallResult) {
+        return overallResultMapper.saveOverallResult(overallResult);
+    }
+
+    @Override
+    public int updateOverallResult(OverallResult overallResult) {
+        return overallResultMapper.updateOverallResult(overallResult);
+    }
+
+    @Override
+    public int removeOverallResult(Integer orId) {
+        return overallResultMapper.removeOverallResult(orId);
+    }
 }

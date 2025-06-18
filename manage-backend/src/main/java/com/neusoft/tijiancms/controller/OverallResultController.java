@@ -22,5 +22,20 @@ public class OverallResultController {
         return overallResultService.listOverallResultByOrderId(overallResult.getOrderId());
     }
 
+    @RequestMapping("/saveOverallResult")
+    public int saveOverallResult(@RequestBody OverallResult overallResult) {
+        return overallResultService.saveOverallResult(overallResult);
+    }
+
+    @RequestMapping("/updateOverallResult")
+    public int updateOverallResult(@RequestBody OverallResult overallResult) {
+        return overallResultService.updateOverallResult(overallResult);
+    }
+
+    @RequestMapping("/removeOverallResult")
+    public int removeOverallResult(@RequestBody OverallResult overallResult) {
+        return overallResultService.removeOverallResult(overallResult.getOrderId());
+    }
+
 
 }
