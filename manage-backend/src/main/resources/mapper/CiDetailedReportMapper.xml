@@ -33,4 +33,11 @@
             )
         </foreach>
     </insert>
+
+    <update id="updateCiDetailedReport" parameterType="java.util.List">
+        <foreach collection="list" item="cidr" separator=";">
+            update cidetailedreport set value=#{cidr.value},isError=#{isError} where cidrId=#{cidr.cidrId}
+        </foreach>
+    </update>
+
 </mapper>

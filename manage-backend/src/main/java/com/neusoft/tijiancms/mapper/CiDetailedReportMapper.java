@@ -14,4 +14,6 @@ public interface CiDetailedReportMapper {
     @Select("select  * from cidetailedreport where orderId=#{orderId} and ciId=#{ciId} order by cidrId")
     List<CiDetailedReport> listCiDetailedReportByOrderIdByCiId(CiDetailedReport ciDetailedReport);
 
+    int updateCiDetailedReport(List<CiDetailedReport> list);
+
 }
