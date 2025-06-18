@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -73,5 +74,22 @@ public class CiReportServiceImpl implements CiReportService {
         int result2 = ciDetailedReportMapper.saveCiDetailedReport(cidrList);
 
         return result1>0&&result2>0?1:0;
+    }
+
+    @Override
+    public List<CiReport> listCiReport(Integer orderId) {
+        //先查询CiReport 获取体检报告中的检查项
+        List<CiReport> cirList = ciReportMapper.listCiReport(orderId);
+
+        //根据获取的检查项 获取检查项明细CiDetailedReport
+        for (CiReport cir : cirList) {
+            CiDetailedReport param = new CiDetailedReport();
+            param.setOrderId(orderId);
+            param.setCiId(cir.getCiId());
+            List<CiDetailedReport> list = ciDetailedReportMapper.listCiDetailedReportByOrderIdByCiId(param);
+            cir.setCidrList(list);
+        }
+
+        return cirList;
     }
 }

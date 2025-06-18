@@ -14,4 +14,6 @@ public interface CiReportMapper {
 
     int saveCiReport(List<CiReport> list);
 
+    @Select("select * from cireport where orderId=#{orderId}")
+    List<CiReport> listCiReport(Integer orderId);
 }
