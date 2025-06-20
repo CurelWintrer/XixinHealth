@@ -28,7 +28,7 @@ import { reactive, toRefs } from 'vue';
 import { useRoute } from 'vue-router';
 import { setSessionStorage } from '@/common';
 import axios from 'axios';
-axios.defaults.baseURL = "http://localhost:8080/tijian/"
+axios.defaults.baseURL = "http://localhost:8088/tijiancms/doctor"
 
 export default {
   setup() {
@@ -48,7 +48,7 @@ export default {
         alert('密码不能为空！');
         return;
       }
-      axios.post('users/getUsersByUserIdByPass', state.LoginForm)
+      axios.post('/getDoctorByCodeByPass', state.LoginForm)
         .then((response) => {
           let doctor = response.data;
           if (doctor != '') {
