@@ -40,3 +40,21 @@
 点击 [这里](http://localhost:8088/tijiancms/test) 测试后端
 
 点击 [这里](https://doc.apipost.net/docs/detail/493ccecdf8b5000?locale=zh-cn&target_id=13cb8af3b12013) 查看API文档
+
+
+
+## 用户端运行结果
+
+![01](images\result\01.png)![02](images\result\02.png)
+
+![03](images\result\03.png)![04](images\result\04.png)
+
+
+
+## 医生端运行结果
+
+![11](images\result\11.png)
+
+![12](images\result\12.png)
+
+![13](images\result\13.png)
