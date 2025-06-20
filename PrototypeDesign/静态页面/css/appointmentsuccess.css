@@ -1,0 +1,168 @@
+/*********总容器*********/
+.wrapper{
+    width:100%;
+    height:100%;
+    background-color: #f9f9f9;
+}
+
+/*********header********/
+header{
+    width:100%;
+    height:15.7vw;
+    background-color: #fff;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 0 3.6vw;
+}
+header .fa{
+    font-size:  8vw;
+}
+
+/*********footer*******/
+footer{
+    width: 100%;
+    height: 14.2vw;
+    box-sizing: border-box;
+    border-top: solid 1px #E9E9E9;
+    background-color: #fff;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+footer ul{
+    width: 100%;
+    height: 14.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+footer ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 3vw;
+    color: #999;
+
+    user-select: none;
+    cursor: pointer;
+}
+footer ul li .fa{
+    font-size: 5vw;
+}
+
+/************common样式**********/
+.top-ban{
+    width: 100%;
+    height: 15.7vw;
+}
+.bottom-ban{
+    width: 100%;
+    height: 14.2vw;
+}
+
+
+section{
+    width: 100%;
+}
+section .success{
+    width: 100%;
+    height: 62vw;
+    border-bottom: solid 1px #eee;
+    background-color: #fff;
+}
+
+section .success .icon-box{
+    width: 100%;
+    height: 30vw;
+    background-image: linear-gradient(135deg,#01c7a4,#02a6c9,#02a6c9);
+    position: relative;
+}
+
+section .success .icon-box .icon{
+    width: 16vw;
+    height: 16vw;
+    border-radius: 8vw;
+    background-color: #fff;
+    
+    position: absolute;
+    left: 42vw;
+    bottom: -8vw;
+
+    font-size: 8vw;
+    color: #02a6c9;
+
+    text-align: center;
+    line-height: 16vw;
+}
+
+section .success h1{
+    text-align: center;
+    font-size: 5.2vw;
+    font-weight: 500;
+    color: #02a6c9;
+    margin-top: 10vw;
+}
+
+section .success p{
+    text-align: center;
+    font-size: 3.4vw;
+    color: #555;
+    margin-top: 3vw;
+}
+
+section .order-btn{
+    width: 100%;
+    height: 14vw;
+    text-align: center;
+    line-height: 14vw;
+    font-size: 4vw;
+    color: #02a6c9;
+    background-color: #fff;
+    user-select: none;
+    cursor: pointer;
+
+}
+
+section .continue{
+    width: 88vw;
+    height: 13vw;
+    margin: 0 auto;
+    background-image: linear-gradient(135deg,#01c7a4,#02a6c9,#02a6c9);
+    text-align: center;
+    border-radius: 1vw;
+    line-height: 13vw;
+    margin-top: 5vw;
+    font-size: 4vw;
+    color: #fff;
+    user-select: none;
+    cursor: pointer;
+}
+
+section .info{
+    width: 100%;
+    margin-top: 16vw;
+}
+
+section .info p{
+    text-align: center;
+    font-size: 3.2vw;
+    color: #999;
+    margin-top: 1vw;
+}
+
+section .info p span{
+    font-size: 3.6vw;
+    color: #555;
+    margin-left: 1vw;
+}

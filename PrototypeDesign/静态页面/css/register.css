@@ -1,0 +1,77 @@
+/****************总容器******************/
+.wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+/****************header******************/
+header{
+    width: 100%;
+    height: 15.7vw;
+    background-color: #FFF;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 0 3.6vw;
+}
+header .fa{
+    font-size: 8vw;
+}
+/****************标题部分******************/
+h1{
+    font-size: 7.4vw;
+    font-weight: 500;
+    box-sizing: border-box;
+    padding: 0 3.6vw;
+    margin-top: 6vw;
+}
+
+/****************common样式******************/
+.top-ban{
+    width: 100%;
+    height: 15.7vw;
+
+}
+
+/****************table******************/
+table{
+    width: 92.8vw;
+    margin: 0 auto;
+    margin-top: 5vw;
+    border-collapse: collapse;
+
+    font-size:4.2vw;
+}
+table tr td{
+    height: 12vw;
+    border-bottom: solid 1px #DDD;
+}
+table tr td input{
+    border: none;
+    outline: none;
+}
+
+/****************btn******************/
+.btn{
+    width: 92.8vw;
+    margin: 0 auto;
+    height: 12vw;
+    margin-top: 8vw;
+    background-color: #137E92;
+    border-radius: 2vw;
+    color: #FFF;
+    font-size: 5vw;
+    text-align: center;
+    line-height: 12vw;
+
+    user-select: none;
+    cursor:pointer;
+    
+}

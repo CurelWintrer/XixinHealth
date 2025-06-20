@@ -1,0 +1,122 @@
+.wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+}
+header{
+    width: 100%;
+    height: 15.7vw;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 3.6vw;
+}
+header .fa{
+    font-size: 8vw;
+}
+footer{
+    width: 100%;
+    height: 14.2vw;
+    background-color: #fff;
+    border-top: solid 1px #e9e9e9;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+footer ul{
+    width: 100%;
+    height: 14.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+footer ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+    color: #999;
+    user-select: none;
+    cursor: pointer;
+}
+footer ul li .fa{
+    font-size: 5vw;
+}
+.top-ban{
+    width: 100%;
+    height: 15.7vw;
+}
+.bottom-ban{
+    width: 100%;
+    height:14.2vw ;
+}
+section{
+    width: 100%;
+}
+section .info{
+    width: 100%;
+    height: 30vw;
+    background-image: linear-gradient(135deg,#7db35d,#02a6c9,#02a6c9)  ;
+    display: flex;
+    align-items: center;
+}
+section .info .content{
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+}
+section .info .content img{
+    width: 14vw;
+    height: 14vw;
+    border-radius: 7vw;
+}
+section .info .content div
+{
+    height: 14vw;
+    margin-left: 3vw;
+    color: #fff;
+}
+section .info .content div p:first-child{
+    font-size: 4.8vw;
+}
+section .info .content div p:last-child{
+    font-size: 3.2vw; 
+    margin-top: 2.6vw;
+}
+section ul{
+    width: 86vw;
+    margin: 0 auto;
+}
+section ul li{
+    width: 100%;
+    height: 14vw;
+    border-bottom: solid 1px #eee;
+    color: #555;
+    font-size: 4.2vw;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+section ul li .left{
+    display: flex;
+    align-items: center;
+}
+section ul li .left p{
+    display: flex;
+    margin-left: 3vw;
+}
+section ul li .right{
+    user-select: none;
+    cursor: pointer;
+}
+section ul li .right i{
+    font-size: 6vw;
+}

@@ -1,0 +1,117 @@
+/*******************总容器*******************/
+.wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+}
+/******************* header *******************/
+header{
+    width: 100%;
+    height: 15.7vw;
+    background-color: #fff;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 0 3.6vw;
+}
+header .fa{
+    font-size: 8vw;
+}
+
+/******************* common *******************/
+.top-ban{
+    width: 100%;
+    height: 15.7vw;
+}
+.bottom-ban{
+    width: 100%;
+    height: 14.2vw;
+}
+/******************* footer *******************/
+footer{
+    width: 100%;
+    height: 14.2vw;
+    background-color: #fff;
+    border-top: solid 1px #e9e9e9;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    }
+    footer ul{
+    width: 100%;
+    height: 14.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    }
+    footer ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+    color: #999;
+    user-select: none;
+    cursor: pointer;
+    }
+    footer ul li .fa{
+    font-size: 5vw;
+    }
+
+/******************* section *******************/
+section{
+    width: 100%;
+
+}
+section img{
+    width: 100%;
+    display: block;
+}
+section ul{
+    width: 86vw;
+    margin: 0 auto;
+}
+section ul li{
+    width: 100%;
+    height: 18vw;
+    border-bottom: solid 1px #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+section ul li .left{
+    display: flex;
+    align-items: center;
+}
+section ul li .left i{
+    font-size: 8vw;
+    color: #6bb9b6;
+    margin-right: 3vw;
+}
+section ul li .left p:first-child{
+    color: #555;
+    font-size: 4.2vw;
+    font-weight: 600;
+}
+section ul li .left p:first-child{
+    color: #999;
+    font-size: 3.2vw;
+    font-weight: 600;
+    margin-top: 1vw;
+}
+section ul li .right{
+    user-select: none;
+    cursor: pointer;
+}
+section ul li .right i{
+    color: #999;
+    font-size: 6vw;
+}

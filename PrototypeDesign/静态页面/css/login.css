@@ -1,0 +1,114 @@
+/******************** 纵容器 ********************/
+.wrapper{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg,#266c9f,#266c9f,#7eb059);
+    overflow: hidden;
+}
+
+/****************** 标题部分 ********************/
+h1{
+    text-align: center;
+    color: #fff;
+    font-size: 9.5vw;
+    font-weight: 500;
+    margin-top: 13vh;
+    margin-bottom: 3vh;
+}
+
+/****************** 内容部分 ********************/
+section{
+    width: 86vw;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 2.4vw;
+
+    box-sizing: border-box;
+    padding: 6vw;
+}
+
+section .input-box{
+    width: 100%;
+    height: 12vw;
+    border: solid 1px #ccc;
+    border-radius: 2vw;
+    margin-top: 5vw;
+
+    display: flex;
+    align-items: center;
+}
+
+section .input-box i{
+    margin:  3vw;
+    font-size: 6vw;
+    color: #ccc;
+}
+
+section .input-box input{
+    border: none;
+    outline: none;
+    font-size: 3vw;
+}
+
+section .reg-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5vw;
+    margin-bottom: 2vw;
+}
+
+section .reg-box p{
+    font-size: 3vw;
+    color: #2d727e;
+    user-select: none;
+    cursor: pointer;
+}
+
+section .button-box{
+    /* 边框 */
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 2vw;
+    background-color: #70b0bc;
+    cursor: pointer;
+
+    /* 文字 */
+    text-align: center;
+    line-height: 13vw;
+    font-size: 4.6vw;
+    color: #FFF;
+    letter-spacing: 1vw;
+    user-select: none;
+    
+}
+
+/****************** 底部部分 ********************/
+
+footer{
+    width: 86vw;
+    margin: 0 auto;
+    margin-top: 12vw;
+    font-size: 3.8vw;
+    color: #fff;
+}
+footer div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+footer div .line{
+    margin-top: 2vw;
+    width: 23vw;
+    height: 1px;
+    background-color: #fff;
+
+}
+
+footer p{
+    margin-top: 2vw;
+    text-align: center;
+}
