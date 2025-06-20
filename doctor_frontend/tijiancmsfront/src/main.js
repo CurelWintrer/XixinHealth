@@ -11,7 +11,7 @@ router.beforeEach(function(to,from,next){
     let doctor =sessionStorage.getItem('doctor');
     if(!(to.path=='/'||to.path=='/login')){
         if(doctor==null){
-            next('/login');
+            router.push('/login');
         }
     }
     next();

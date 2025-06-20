@@ -1,148 +1,232 @@
 <template>
+  <el-container style="height: 100%">
+    <el-header>
+      <h1>Neusoft&nbsp;&nbsp; 东软体检报告管理系统</h1>
+      <p>医生：{{doctor.realName}}</p>
+    </el-header>
     <el-container>
-      <el-header>
-        <div class="header-title">Neusoft 体检报告管理系统</div>
-        <div class="user-info">医生: 张仲景</div>
-      </el-header>
-  
-      <el-main>
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <el-form :model="form" label-width="80px">
-              <el-form-item label="体检号">
-                <el-input v-model="form.userId" />
-              </el-form-item>
-              <el-form-item label="手机号">
-                <el-input v-model="form.realName" />
-              </el-form-item>
-              <el-form-item label="性别">
-                <el-select v-model="form.sex" placeholder="请选择">
-                  <el-option label="男" value="男" />
-                  <el-option label="女" value="女" />
-                </el-select>
-              </el-form-item>
-              <el-form-item label="套餐选择">
-                <el-input v-model="form.smId" />
-              </el-form-item>
-              <el-form-item label="体检日期">
-                <el-date-picker v-model="form.orderDate" type="date" />
-              </el-form-item>
-              <el-form-item label="状态">
-                <el-radio-group v-model="form.state">
-                  <el-radio :label="1">已预约</el-radio>
-                  <el-radio :label="0">已取消</el-radio>
-                </el-radio-group>
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="fetchOrders">查询</el-button>
-                <el-button @click="resetForm">重置</el-button>
-              </el-form-item>
-            </el-form>
-          </el-col>
-  
-          <el-col :span="18">
-            <el-table :data="orders" style="width: 100%">
-              <el-table-column prop="orderId" label="预约号" />
-              <el-table-column prop="userPhone" label="手机号" />
-              <el-table-column prop="userName" label="真实姓名" />
-              <el-table-column prop="sex" label="性别" />
-              <el-table-column prop="setmealName" label="套餐" />
-              <el-table-column prop="orderType" label="预约类型" />
-              <el-table-column prop="orderDate" label="预约日期" />
-              <el-table-column label="操作">
-                <template #default="scope">
-                  <el-link type="primary">查看报告</el-link>
-                </template>
-              </el-table-column>
-            </el-table>
-  
-            <div class="pagination">
-              <el-pagination
-                layout="prev, pager, next"
-                :total="total"
-                :page-size="form.maxPageNum"
-                @current-change="handlePageChange"
+      <el-aside width="260px">
+        <h4>体检用户查询</h4>
+        <el-form ref="fromRef" :model="selectForm" label-width="auto">
+          <el-form-item label="手机号码">
+            <el-input
+              v-model="selectForm.userId"
+              placeholder="手机号码"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="姓名">
+            <el-input
+              v-model="selectForm.realName"
+              placeholder="姓名"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="性别">
+            <el-radio-group v-model="selectForm.sex">
+              <el-radio label="1">男</el-radio>
+              <el-radio label="0">女</el-radio>
+            </el-radio-group>
+          </el-form-item>
+
+          <el-form-item label="套餐类型">
+            <el-select v-model="selectForm.smId" placeholder="套餐类型">
+              <el-option
+                v-for="setmeal in setmealArr"
+                :key="setmeal.smId"
+                :label="setmeal.name"
+                :value="setmeal.smId"
               />
-            </div>
-          </el-col>
-        </el-row>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="体检日期">
+            <el-date-picker
+              v-model="selectForm.orderDate"
+              type="date"
+              placeholder="体检日期"
+              style="width: 100%"
+              format="YYYY/MM/DD"
+        value-format="YYYY-MM-DD"
+            />
+          </el-form-item>
+          <el-form-item label="是否归档">
+            <el-radio-group v-model="selectForm.state">
+              <el-radio border label="1">未归档</el-radio>
+              <el-radio border label="2">已归档</el-radio>
+            </el-radio-group>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" @click="doSelect">查询</el-button>
+            <el-button type="warning" @click="reset">重置</el-button>
+          </el-form-item>
+        </el-form>
+      </el-aside>
+      <el-main>
+        <el-table :data="OrdersPageResponseDto.list" style="width: 100%">
+          <el-table-column prop="orderId" label="预约编号" width="120" />
+          <el-table-column prop="userId" label="手机号码" width="140" />
+          <el-table-column prop="users.realName" label="真实姓名" width="120" />
+          <el-table-column label="性别" width="60">
+            <template #default="scope">
+                <span >{{ scope.row.users.sex==1?'男':'女' }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="setmeal.name" label="套餐类型" />
+          <el-table-column prop="hospital.name" label="体检医院" width="220" />
+          <el-table-column prop="orderDate" label="体检日期" />
+          <el-table-column label="操作" width="120">
+            <template #default="scope">
+              <el-button type="text" size="small" @click="ciReport(scope.row)"
+                >{{ scope.row.state==1?'编辑体检报告':'查看体检报告' }}</el-button
+              >
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-pagination
+          background
+          layout="prev, pager, next, total"
+          :total="OrdersPageResponseDto.totalRow"
+          :page-size="OrdersPageResponseDto.maxPageNum"
+          style="margin-top: 20px"
+          @current-change="currentChange"
+        />
       </el-main>
     </el-container>
-  </template>
-  
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  import axios from 'axios'
-  
-  const form = ref({
-    userId: '',
-    realName: '',
-    sex: '',
-    smId: '',
-    orderDate: '',
-    state: 1,
-    pageNum: 1,
-    maxPageNum: 5,
-    beginNum: 1,
-  })
-  
-  const orders = ref([])
-  const total = ref(0)
-  
-  const fetchOrders = async () => {
-    try {
-      console.log('请求参数：', JSON.stringify(form.value, null, 2));
-      const response = await axios.post('http://127.0.0.1:8088/tijiancms/orders/listOrders', form.value)
-      console.log('完整响应数据：', response);
-      orders.value = response.data?.records || []
-      total.value = response.data?.total || 0
-    } catch (error) {
-      console.error('请求失败：', error);
-      ElMessage.error('数据加载失败，请检查网络连接')
-      orders.value = []
-      total.value = 0
+  </el-container>
+</template>
+
+<script>
+import { reactive, toRefs } from "vue";
+import { useRouter } from "vue-router";
+import { getSessionStorage } from "../common.js";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8088/tijiancms/";
+
+export default {
+  setup() {
+    const router = useRouter();
+
+    const state = reactive({
+      doctor: getSessionStorage('doctor'),
+      selectForm: {
+        userId: "",
+        realName: "",
+        sex: "",
+        smId: "",
+        orderDate: "",
+        state: "1",
+      },
+
+      setmealArr: [],
+      OrdersPageResponseDto: {},
+    });
+
+    listSetmeal();
+    function listSetmeal() {
+      axios
+        .post("setmeal/listSetmeal")
+        .then((response) => {
+          state.setmealArr = response.data;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
-  }
-  
-  const handlePageChange = (page) => {
-    form.value.pageNum = page
-    form.value.beginNum = (page - 1) * form.value.maxPageNum + 1
-    fetchOrders()
-  }
-  
-  const resetForm = () => {
-    form.value = {
-      userId: '',
-      realName: '',
-      sex: '',
-      smId: '',
-      orderDate: '',
-      state: 1,
-      pageNum: 1,
-      maxPageNum: 5,
-      beginNum: 1,
+
+    listOrders(1);
+    function listOrders(pageNum) {
+      state.selectForm.pageNum = pageNum;
+      state.selectForm.maxPageNum = 10;
+      axios
+        .post("orders/listOrders", state.selectForm)
+        .then((response) => {
+          state.OrdersPageResponseDto = response.data;
+          console.log(state.OrdersPageResponseDto);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
-    fetchOrders()
-  }
-  
-  onMounted(() => {
-    fetchOrders()
-  })
-  </script>
-  
-  <style scoped>
-  .header-title {
-    float: left;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  .user-info {
-    float: right;
-    margin-top: 5px;
-  }
-  .pagination {
-    margin-top: 20px;
-    text-align: right;
-  }
-  </style>
-  
+
+    function ciReport(row) {
+      axios
+        .post("ciReport/createReportTemplate", {
+          orderId: row.orderId,
+          smId: row.smId
+        })
+        .then((response) => {
+          if(response.data==1){
+            router.push({path:'/ordersContent',query:{orderId:row.orderId}});
+          }else{
+            alert('生成报告模板失败！');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+    function doSelect() {
+      listOrders(1);
+    }
+
+    function currentChange(pageNum){
+      listOrders(pageNum);
+    }
+    function reset(){
+      state.selectForm= {
+        userId: "",
+        realName: "",
+        sex: "",
+        smId: "",
+        orderDate: "",
+        state: "1"
+      }
+    }
+    return {
+      ...toRefs(state),
+      ciReport,
+      doSelect,
+      listOrders,
+      currentChange,
+      reset
+    };
+  },
+};
+</script>
+
+<style scoped>
+.el-header {
+  background-color: #b3c0d1;
+  color: var(--el-text-color-primary);
+  text-align: center;
+  line-height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1c51a3;
+}
+
+.el-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.el-header p {
+  font-size: 16px;
+}
+.el-aside {
+  background-color: #d3dce6;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.el-aside h4 {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.el-main {
+  background-color: #e9eef3;
+}
+</style>
