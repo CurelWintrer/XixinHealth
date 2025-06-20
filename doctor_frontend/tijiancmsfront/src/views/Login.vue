@@ -25,14 +25,14 @@
 
 <script>
 import { reactive, toRefs } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { setSessionStorage } from '@/common';
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:8088/tijiancms/doctor"
 
 export default {
   setup() {
-    const router = useRoute();
+    const router = useRouter();
     const state = reactive({
       LoginForm: {
         docCode: "",
@@ -53,7 +53,7 @@ export default {
           let doctor = response.data;
           if (doctor != '') {
             setSessionStorage('doctor', doctor);
-            router.push('/ordersList');
+            router.push('/ordersList')
           } else {
             alert('编码或密码错误！');
           }
