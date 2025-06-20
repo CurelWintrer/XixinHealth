@@ -45,16 +45,16 @@
 
 ## 用户端运行结果
 
-![01](images\result\01.png)![02](images\result\02.png)
+![01](images/result/01.png)![02](images/result/02.png)
 
-![03](images\result\03.png)![04](images\result\04.png)
+![03](images/result/03.png)![04](images/result/04.png)
 
 
 
 ## 医生端运行结果
 
-![11](images\result\11.png)
+![11](images/result/11.png)
 
-![12](images\result\12.png)
+![12](images/result/12.png)
 
-![13](images\result\13.png)
+![13](images/result/13.png)
